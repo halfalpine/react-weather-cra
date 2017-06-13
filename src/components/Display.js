@@ -19,7 +19,7 @@ class Display extends React.Component{
 
     return (
       <div>
-        <h1>Weather application</h1>
+        <h2>Weather Display</h2>
         <p>This is the location {location}</p>
         {conditions()}
       </div>

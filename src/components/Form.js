@@ -1,16 +1,14 @@
 import React from 'react';
 
 class Form extends React.Component {
+
   constructor(props) {
       super(props);
 
       this.state = {
           location: 'bar'
       };
-
-    this.handleQueryWeather.bind(this);
   }
-
 
   handleLocationInput = (e) => {
     this.setState({
@@ -19,8 +17,8 @@ class Form extends React.Component {
 
   }
 
-  handleDetectWeather = () => {
-   
+  handleDetectWeather = (e) => {
+    e.preventDefault();
     navigator.geolocation.getCurrentPosition(position => {
       this.props.onCoordinateSearch(position.coords.latitude, position.coords.longitude);
     });
@@ -29,11 +27,13 @@ class Form extends React.Component {
     });
   }
 
-  handleQueryWeather = () => {
-    this.props.onLocationSearch(this.state.location);
-    this.setState({
-      location: ''
-    });
+  handleQueryWeather = (e) => {
+    e.preventDefault();
+    console.log(this.props.dirk);
+    // this.props.onLocationSearch(this.state.location);
+    // this.setState({
+    //   location: ''
+    // });
   }
 
   render() {

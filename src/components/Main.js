@@ -1,7 +1,7 @@
-import React from 'react';;
-import ForecastWidget from '/.ForecastWidget';
+import React, {Component} from 'react';
+import ForecastWidget from './ForecastWidget.js';
 
-class Main extends React.Component {
+class Main extends Component {
   constructor(props) {
     super(props);
   }

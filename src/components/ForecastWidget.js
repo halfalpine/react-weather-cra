@@ -1,16 +1,16 @@
-import react from 'react';
-import weatherThings from '../../api/weatherThing.jsx';
-import Display from './Display.jsx';
-import Form from './Form.jsx';
+import React, {Component} from 'react';
+import Display from './Display.js';
+import Form from './Form.js';
 
-class ForecastWidget extends React.Component{
-         state = {
-            forecast: null
-        };
+class ForecastWidget extends Component{
+    state = {
+        forecast: null
+    };
     
 
     handleCoordinateSearch(x, y) {
-        this.setState({forecast});
+        console.log('calling handleCoordinateSearch');
+        // this.setState({forecast});
     }
 
     handleCitySearch(location) {
@@ -19,13 +19,17 @@ class ForecastWidget extends React.Component{
     }
 
     render() {
+        return (
         <div>
-            <Display location={location} forecast={forecast}/>
+            <h1>Weather widget</h1>
+            <Display forecast={this.state.forecast}/>
             <Form 
-                onLocationSearch={this.handleCitySeaerch}
+                onLocationSearch={this.handleCitySearch}
                 onCoordinateSearch={this.handleCoordinateSearch}
+                dirk='foo bar'
             />
         </div>
+        ); 
     }
 }
 

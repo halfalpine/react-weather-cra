@@ -8,7 +8,8 @@ class Form extends React.Component {
     }
   }
 
-  handleLocationInput(e) {
+  handleLocationInput = (e) => {
+      console.log(e.target.value);
     this.setState({
       location: e.target.value
     });
@@ -34,7 +35,7 @@ class Form extends React.Component {
     return (
       <div>
         <form>
-          <input type='text' onChange={this.handleLocationInput} ref='location' placeholder='Enter a place'/>
+          <input type='text' onChange={this.handleLocationInput} placeholder='Enter a place'/>
           <button onClick={this.handleQueryWeather}>Search for weather somewhere</button>
           <button onClick={this.handleDetectWeather}>Get my weather here</button>
         </form>

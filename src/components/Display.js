@@ -6,8 +6,8 @@ class Display extends React.Component{
   }
 
   render() {
-    const {location} = this.props;
-    const {temp, rain, clouds} = this.props.forecast;
+    const {location} = this.props || 'testing';
+    // const {temp, rain, clouds} = this.props.forecast;
     const conditions = (apiResponse) => {
         if (apiResponse) {
             return <p>We have a forecast!</p>
@@ -20,8 +20,8 @@ class Display extends React.Component{
     return (
       <div>
         <h1>Weather application</h1>
-        <p>This is the display.</p>
-        {conditions}
+        <p>This is the location {location}</p>
+        {conditions()}
       </div>
     );
   }

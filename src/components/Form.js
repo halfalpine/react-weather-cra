@@ -34,9 +34,9 @@ class Form extends React.Component {
     return (
       <div>
         <form>
-          <input type='text' onChange={handleLocationInput} ref='location' placeholder='Enter a place'/>
-          <button onClick={handleQueryWeather}>Search for weather somewhere</button>
-          <button onClick={handleDetectWeather}>Get my weather here</button>
+          <input type='text' onChange={this.handleLocationInput} ref='location' placeholder='Enter a place'/>
+          <button onClick={this.handleQueryWeather}>Search for weather somewhere</button>
+          <button onClick={this.handleDetectWeather}>Get my weather here</button>
         </form>
       </div>
     );

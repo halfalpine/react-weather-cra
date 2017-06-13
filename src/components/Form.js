@@ -1,46 +1,46 @@
-import React, {Component} from 'react';
+import React from 'react';
 
-class Form extends Component {
-
-    state = {
-        location: 'Pittsburgh'
+class Form extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      location: 'bar'
     }
+  }
 
-    handleChange = (e) => {
-        this.setState({
-            location: e.target.value
-        });
-    }
+  handleLocationInput(e) {
+    this.setState({
+      location: e.target.value
+    });
+  }
 
-    handleDefaultSearch = (e) => {
-        e.preventDefault();
-        this.props.onSearch(this.state.location);
-        this.setState({
-            location: ''
-        });
-    }
+  handleDetectWeather() {
+    navigator.geolocation.getCurrentPosition(position => {
+      this.props.handleLocationSearch(position.coords.latitude, position.coords.longitude);
+    });
+    this.setState({
+      location: ''
+    });
+  }
 
-    handleGetUserLocation = (e) => {
-        e.preventDefault();
-        this.props.onCoordsSearch();
-        this.setState({
-            location: ''
-        });
-    }
+  handleQueryWeather() {
+    this.props.handleWeatherSearch(this.state.location);
+    this.setState({
+      location: ''
+    });
+  }
 
-    render() {
-        return (
-            <div>
-                <div>I'm a Form.</div>
-                <form>
-                    <input type="text" onChange={this.handleChange} value={this.state.location} />
-                    <button onClick={this.handleDefaultSearch}>Get Weather</button>
-                    <button onClick={this.handleGetUserLocation}>Find my location</button>
-                </form>
-            </div>
-        );
-    }
-
-}
+  render() {
+    return (
+      <div>
+        <form>
+          <input type='text' onChange={handleLocationInput} ref='location' placeholder='Enter a place'/>
+          <button onClick={handleQueryWeather}>Search for weather somewhere</button>
+          <button onClick={handleDetectWeather}>Get my weather here</button>
+        </form>
+      </div>
+    );
+  }
+};
 
 export default Form;

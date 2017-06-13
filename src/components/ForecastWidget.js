@@ -4,25 +4,27 @@ import Display from './Display.jsx';
 import Form from './Form.jsx';
 
 class ForecastWidget extends React.Component{
-    constructor(props) {
-        super(props);
-         this.state = {
-            location: 'foo',
+         state = {
             forecast: null
         };
-    }
+    
+
     handleCoordinateSearch(x, y) {
         this.setState({forecast});
     }
 
-    handleCitySeaerch(location) {
-        this.setState({forecast})
+    handleCitySearch(location) {
+        console.log('searching');
+        // this.setState({forecast});
     }
 
     render() {
         <div>
             <Display location={location} forecast={forecast}/>
-            <Form/>
+            <Form 
+                onLocationSearch={this.handleCitySeaerch}
+                onCoordinateSearch={this.handleCoordinateSearch}
+            />
         </div>
     }
 }

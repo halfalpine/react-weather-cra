@@ -8,14 +8,14 @@ class Display extends React.Component{
   render() {
     const {location} = this.props;
     const {temp, rain, clouds} = this.props.forecast;
-    const conditions = if (this.props.forecast) {
-      <p>temp</p>
-      <p>rain>/p>
-      <p>clouds</p>
-    } else {
-      <p>no forecast yet!</p>
-      <p>placeholder</p>
+    const conditions = (apiResponse) => {
+        if (apiResponse) {
+            return <p>We have a forecast!</p>
+        } else {
+            return <p>No forecast yet.</p>
+        }
     }
+    
 
     return (
       <div>

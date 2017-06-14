@@ -22,26 +22,26 @@ class Form extends React.Component {
     navigator.geolocation.getCurrentPosition(position => {
       this.props.onCoordinateSearch(position.coords.latitude, position.coords.longitude);
     });
-    this.setState({
-      location: ''
-    });
+    // this.setState({
+    //   location: ''
+    // });
   }
 
   handleQueryWeather = (e) => {
     e.preventDefault();
     this.props.onLocationSearch(this.state.location);
-    // this.setState({
-    //   location: ''
-    // });
+    this.setState({
+      location: ''
+    });
   }
 
   render() {
     return (
       <div>
         <form>
-          <input 
-            type='text' 
-            onChange={this.handleLocationInput} 
+          <input
+            type='text'
+            onChange={this.handleLocationInput}
             placeholder='Enter a place'
             value={this.state.location}
           />

@@ -7,10 +7,12 @@ class ForecastWidget extends Component{
     state = {
         forecast: null
     };
-    
+
 
     handleCoordinateSearch = (x, y)  => {
         console.log('calling handleCoordinateSearch');
+        getForecast.forCoordinates(x, y)
+        .then(stuff => console.log(stuff))
         // this.setState({forecast});
     }
 
@@ -27,13 +29,12 @@ class ForecastWidget extends Component{
         <div>
             <h1>Weather widget</h1>
             <Display forecast={this.state.forecast}/>
-            <Form 
+            <Form
                 onLocationSearch={this.handleCitySearch}
                 onCoordinateSearch={this.handleCoordinateSearch}
-                dirk='foo bar'
             />
         </div>
-        ); 
+        );
     }
 }
 

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import Display from './Display.js';
 import Form from './Form.js';
+import getForecast from '../api/cityForecast.js';
 
 class ForecastWidget extends Component{
     state = {
@@ -8,14 +9,17 @@ class ForecastWidget extends Component{
     };
     
 
-    handleCoordinateSearch(x, y) {
+    handleCoordinateSearch = (x, y)  => {
         console.log('calling handleCoordinateSearch');
         // this.setState({forecast});
     }
 
-    handleCitySearch(location) {
-        console.log('searching');
+    handleCitySearch = (location) => {
+        getForecast.forCity(location)
+        .then(stuff => console.log(stuff))
+
         // this.setState({forecast});
+        // console.log('state forecast', this.state.forecast);
     }
 
     render() {

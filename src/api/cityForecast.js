@@ -1,13 +1,15 @@
+import fetchJsonp from 'fetch-jsonp';
 const API_KEY = process.env.REACT_APP_OWA_KEY;
-const OWA_URL = `api.openweathermap.org/data/2.5/weather?APPID=${API_KEY}`;
+const OWA_URL = `http://api.openweathermap.org/data/2.5/weather?`;
 
-console.log(API_KEY);
-
-let getForecast = location => {
-    const encodedLocation = encodeURIComponent(location);
-    fetch(`${OPEN_WEATHER_MAP_URL}&q=${encodedLocation}`)
-        .then(forecast => forecast)
-        .catch(response => console.error(response));
-};
+let getForecast = {
+    forCity(location) {
+        let encodedLocation = encodeURIComponent(location);
+        let url = `${OWA_URL}q=${encodedLocation}&appid=${API_KEY}`
+        return fetchJsonp(url)
+            .then(conditions => conditions)
+            // .catch(response => console.error(response));  
+    }
+}
 
 export default getForecast;

@@ -29,8 +29,7 @@ class Form extends React.Component {
 
   handleQueryWeather = (e) => {
     e.preventDefault();
-    console.log(this.props.dirk);
-    // this.props.onLocationSearch(this.state.location);
+    this.props.onLocationSearch(this.state.location);
     // this.setState({
     //   location: ''
     // });

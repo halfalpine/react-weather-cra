@@ -5,30 +5,46 @@ import getForecast from '../api/openWeatherMap.js';
 
 class ForecastWidget extends Component{
     state = {
-        forecast: null
+        name: '',
+        temp: '',
+        main: '',
+        icon: ''
     };
 
 
     handleCoordinateSearch = (x, y)  => {
-        console.log('calling handleCoordinateSearch');
+        let that = this;
+
         getForecast.forCoordinates(x, y)
-        .then(stuff => console.log(stuff))
-        // this.setState({forecast});
+        .then(weather => {
+          that.setState({
+            name: weather.name,
+            temp: weather.main.temp,
+            cond: weather.weather[0].main,
+            icon: weather.weather[0].icon
+          });
+        });
     }
 
     handleCitySearch = (location) => {
-        getForecast.forCity(location)
-        .then(stuff => console.log(stuff))
+        let that = this;
 
-        // this.setState({forecast});
-        // console.log('state forecast', this.state.forecast);
+        getForecast.forCity(location)
+        .then(weather => {
+          that.setState({
+            name: weather.name,
+            temp: weather.main.temp,
+            cond: weather.weather[0].main,
+            icon: weather.weather[0].icon
+          });
+        });
     }
 
     render() {
         return (
         <div>
             <h1>Weather widget</h1>
-            <Display forecast={this.state.forecast}/>
+            <Display {...this.state}/>
             <Form
                 onLocationSearch={this.handleCitySearch}
                 onCoordinateSearch={this.handleCoordinateSearch}

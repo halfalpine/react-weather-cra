@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import Display from './Display.js';
 import Form from './Form.js';
-import getForecast from '../api/cityForecast.js';
+import getForecast from '../api/openWeatherMap.js';
 
 class ForecastWidget extends Component{
     state = {

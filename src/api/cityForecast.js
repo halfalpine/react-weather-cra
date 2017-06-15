@@ -7,7 +7,7 @@ let getForecast = {
         let encodedLocation = encodeURIComponent(location);
         let url = `${OWA_URL}q=${encodedLocation}&appid=${API_KEY}`
         return fetchJsonp(url)
-            .then(conditions => conditions)
+            .then(conditions => conditions.json())
             // .catch(response => console.error(response));
     },
 
@@ -15,7 +15,7 @@ let getForecast = {
       console.log('in forCoordinates')
       let url = `${OWA_URL}lat=${xCoord}&lon=${yCoord}&appid=${API_KEY}`;
       return fetchJsonp(url)
-        .then(conditions => conditions)
+        .then(conditions => conditions.json())
     }
 }
 

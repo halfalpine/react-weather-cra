@@ -8,7 +8,6 @@ let getForecast = {
         let url = `${OWA_URL}q=${encodedLocation}&appid=${API_KEY}`
         return fetchJsonp(url)
             .then(conditions => conditions.json())
-            // .catch(response => console.error(response));
     },
 
     forCoordinates(xCoord, yCoord) {
